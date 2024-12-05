@@ -1,0 +1,11 @@
+__pycache__
+.venv
+.vscode
+node_modules
+input.txt
+
+# Future for TS
+package.json
+runner.js
+tsconfig.json
+yarn.lock

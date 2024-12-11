@@ -14,10 +14,10 @@ pip install -r requirements.txt
 
 ## Launching scripts
 
-_Pre-requisite: Create `input.txt` inside of each folder `day-<number>` and then copy your input puzzle respectively._
+_Pre-requisite: Create `input.txt` inside of each folder `day_<number>` and then copy your input puzzle respectively.\_
 
 ### Python
 
 ```bash
-python -m day-<number>.python.main
+python runner.py <day_number>
 ```

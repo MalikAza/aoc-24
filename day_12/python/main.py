@@ -1,24 +1,25 @@
 from functools import cache
 import random
-from typing import Dict, Tuple, List
+from typing import Dict, Tuple, List, Set
 from utils.python import get_file
+import collections
 
 class Region:
+    __slots__ = ['cells', 'search_nodes']
     def __init__(self, first_cell: Tuple[int, int]):
         self.cells: List[Tuple[int, int]] = [first_cell]
         self.search_nodes: List[Tuple[int, int]] = [first_cell]
-        self.perimeter = 0
 
 class Map:
     def __init__(self, data: List[str]):
         self.map = [x.replace('\n', '') for x in data]
         self.__regions: Dict[str, Region] = {}
+        self.__region_lookup: Dict[Tuple[int, int], str] = {}
         self.__parse_regions()
 
     @cache
     def __get_next_cell_id(self, cell_id: str) -> str:
         random.seed(cell_id)
-
         return f"{cell_id}{random.randint(0, 9)}"
 
     @cache
@@ -33,51 +34,56 @@ class Map:
         return [(x, y + 1), (x + 1, y), (x, y - 1), (x - 1, y)]
     
     def __bfs(self, region: Region, cell: str):
-        while len(region.search_nodes) != 0:
-            x, y = region.search_nodes.pop(0)
+        visited: Set[Tuple[int, int]] = set(region.cells)
+        queue = collections.deque(region.search_nodes)
+
+        while queue:
+            x, y = queue.popleft()
 
             for adjacent_pos in self.get_positions_adjacent_to(x, y):
-                if self.is_position_out_of_bounds(*adjacent_pos):
+                if (adjacent_pos in visited or 
+                    self.is_position_out_of_bounds(*adjacent_pos) or 
+                    self.map[adjacent_pos[1]][adjacent_pos[0]] != cell):
                     continue
-                if adjacent_pos not in region.cells and self.map[adjacent_pos[1]][adjacent_pos[0]] == cell:
-                    region.cells.append(adjacent_pos)
-                    region.search_nodes.append(adjacent_pos)
+
+                region.cells.append(adjacent_pos)
+                queue.append(adjacent_pos)
+                visited.add(adjacent_pos)
+                self.__region_lookup[adjacent_pos] = cell
 
     def __position_cell_in_regions(self, x: int, y: int, cell: str):
-        if not cell in self.__regions:
-            region = Region((x, y))
-            self.__regions[cell] = region
-            self.__bfs(region, cell)
-            return
-        
-        if (x, y) in self.__regions[cell].cells:
+        # Check if this position is already in a region
+        if (x, y) in self.__region_lookup:
             return
 
-        region_found_or_created = False
-        while not region_found_or_created:
-            cell_id = self.__get_next_cell_id(cell)
-            if not cell_id in self.__regions:
+        # Create a new region or find an existing one
+        region_id = cell
+        attempt = 0
+        while True:
+            if region_id not in self.__regions:
                 region = Region((x, y))
-                self.__regions[cell_id] = region
+                self.__regions[region_id] = region
+                self.__region_lookup[((x, y))] = cell
                 self.__bfs(region, cell)
-                region_found_or_created = True
-            else:
-                if (x, y) in self.__regions[cell_id].cells:
-                    region_found_or_created = True
+                break
+            
+            region_id = self.__get_next_cell_id(f"{cell}_{attempt}")
+            attempt += 1
 
     def __parse_regions(self):
         for y, row in enumerate(self.map):
             for x, cell in enumerate(row):
                 self.__position_cell_in_regions(x, y, cell)
 
-    def __get_region_perimeter(self, region: Region):
+    def __get_region_perimeter(self, region: Region) -> int:
         if len(region.cells) == 1:
             return 4
         
+        cell_set = set(region.cells)
         perimeter = 0
         for x, y in region.cells:
             for adjacent_pos in self.get_positions_adjacent_to(x, y):
-                if adjacent_pos not in region.cells:
+                if adjacent_pos not in cell_set:
                     perimeter += 1
 
         return perimeter
@@ -86,7 +92,7 @@ class Map:
         return len(region.cells) * self.__get_region_perimeter(region)
     
     def __map_price(self) -> int:
-        return sum([self.__get_region_price(region) for region in self.__regions.values()])
+        return sum(self.__get_region_price(region) for region in self.__regions.values())
     
     def solve_part_one(self) -> int:
         return self.__map_price()

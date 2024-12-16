@@ -68,7 +68,7 @@ def run():
     solution = Solution(file.read())
 
     print(f'Part one solution is: {solution.solve(1)}')
-    print(f'Part two solution is: {solution.solve(2)}')
+    # print(f'Part two solution is: {solution.solve(2)}')
 
 if __name__ == '__main__':
     run()

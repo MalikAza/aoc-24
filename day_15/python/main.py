@@ -1,7 +1,7 @@
 from copy import deepcopy
 from functools import cache
 from typing import Tuple
-from utils.python import get_file
+from utils.python import get_input_file_from_script_file
 
 class Map:
     __slots__ = ['map', 'directions', 'robot_position', 'walls']
@@ -132,7 +132,7 @@ class Map:
         return sum(self.get_gps_coordinates_from_position(box) for box in self.get_boxes())
 
 def run():
-    file = get_file(__file__)
+    file = get_input_file_from_script_file(__file__)
     map = Map(file.read())
 
     print(f'Part one solution is: {map.solve_part_one()}')

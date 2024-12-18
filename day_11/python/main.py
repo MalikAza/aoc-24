@@ -1,7 +1,7 @@
 from copy import deepcopy
 from functools import cache
 from typing import List, Literal
-from utils.python import get_file
+from utils.python import get_input_file_from_script_file
 
 class Solution:
     def __init__(self, data: str):
@@ -43,7 +43,7 @@ def run():
     import tracemalloc
 
     tracemalloc.start()
-    file = get_file(__file__)
+    file = get_input_file_from_script_file(__file__)
 
     solution_part_one = Solution(file.read())
     solution_part_two = deepcopy(solution_part_one)

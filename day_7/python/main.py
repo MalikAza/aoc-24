@@ -1,6 +1,6 @@
 from itertools import product
 from typing import List, Literal
-from utils.python import get_file
+from utils.python import get_input_file_from_script_file
 
 
 class Solution:
@@ -37,7 +37,7 @@ class Solution:
         return sum(final_value for final_value, numbers in self.__data if self.__is_equation_possible(final_value, numbers, operators))
 
 def run():
-    file = get_file(__file__)
+    file = get_input_file_from_script_file(__file__)
     solution = Solution(file.read().split('\n'))
     
     print("Part one solution is: ", solution.solve(1))

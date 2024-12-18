@@ -1,5 +1,5 @@
 from typing import List, Literal, Tuple
-from utils.python import get_file
+from utils.python import get_input_file_from_script_file
 import re
 
 class Memory:
@@ -36,7 +36,7 @@ class Memory:
         return sum([mul[0] * mul[1] for mul in muls])
 
 def run():
-    file = get_file(__file__)
+    file = get_input_file_from_script_file(__file__)
     memory = Memory(file.read())
 
     print("Part one solution is: ", memory.solve(1))

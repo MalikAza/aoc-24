@@ -1,6 +1,6 @@
 from copy import deepcopy
 import re
-from utils.python import get_file
+from utils.python import get_input_file_from_script_file
 
 class DiskMap:
 
@@ -45,7 +45,7 @@ class DiskMap:
         return sum([int(x) * index for index, x in enumerate(self.__representation) if self.__is_digit(x)])
 
 def run():
-    file = get_file(__file__)
+    file = get_input_file_from_script_file(__file__)
     disk_map = DiskMap(file.read())
 
     print("Part one solution is: ", disk_map.solve_part_one())

@@ -1,7 +1,7 @@
 from io import TextIOWrapper
 from itertools import combinations, pairwise
 from typing import List
-from utils.python import get_file
+from utils.python import get_input_file_from_script_file
 
 def get_reports(file: TextIOWrapper) -> List[List[int]]:
     lines = [line.replace('\n', '') for line in file.readlines()]
@@ -62,7 +62,7 @@ class Report:
         return self.__is_continuous() and self.__respect_differences()
 
 def run ():
-    file = get_file(__file__)
+    file = get_input_file_from_script_file(__file__)
     reports = get_reports(file)
     safe_reports_part_one = [report for report in reports if Report(report).is_safe()]
     safe_reports_part_two = [report for report in reports if any([Report(list(comb)).is_safe() for comb in combinations(report, len(report)-1)])]

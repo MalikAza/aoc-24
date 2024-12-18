@@ -1,5 +1,5 @@
 from typing import List, Literal, Tuple
-from utils.python import get_file, MapUtils
+from utils.python import get_input_file_from_script_file, MapUtils
 
 class Map(MapUtils):
     __guard_icon: Literal['^', '>', 'v', '<']
@@ -40,7 +40,7 @@ class Map(MapUtils):
         return len(set(self.__visited_cells))
 
 def run():
-    file = get_file(__file__)
+    file = get_input_file_from_script_file(__file__)
     map = Map(file.read())
 
     print("Part one solution is: ", map.solve_part_one())

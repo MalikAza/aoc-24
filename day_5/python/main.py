@@ -1,6 +1,6 @@
 from functools import cmp_to_key
 from typing import List, Tuple
-from utils.python import get_file
+from utils.python import get_input_file_from_script_file
 
 class RulesStore:
     def __init__(self, data: str):
@@ -85,7 +85,7 @@ class Solution:
         return sum([self.__get_middle_page(x) for x in self.__correct_printings])
 
 def run():
-    file = get_file(__file__)
+    file = get_input_file_from_script_file(__file__)
     r, p = file.read().split('\n\n')
     solution = Solution(r, p)
 

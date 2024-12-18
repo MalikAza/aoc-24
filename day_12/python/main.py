@@ -1,7 +1,7 @@
 from functools import cache
 import random
 from typing import Dict, Literal, Tuple, List, Set
-from utils.python import get_file
+from utils.python import get_input_file_from_script_file
 import collections
 
 class Region:
@@ -175,7 +175,7 @@ class Map:
         return self.__map_price(part)
 
 def run():
-    file = get_file(__file__)
+    file = get_input_file_from_script_file(__file__)
     map = Map(file.readlines())
 
     print(f'Part one solution is: {map.solve(1)}')

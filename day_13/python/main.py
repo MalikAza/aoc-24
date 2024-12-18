@@ -1,5 +1,5 @@
 from typing import Literal
-from utils.python import get_file
+from utils.python import get_input_file_from_script_file
 
 class Button:
     def __init__(self, data: str):
@@ -64,7 +64,7 @@ class Solution:
         return sum([x.get_best(part) for x in self.__claws])
 
 def run():
-    file = get_file(__file__)
+    file = get_input_file_from_script_file(__file__)
     solution = Solution(file.read())
 
     print(f'Part one solution is: {solution.solve(1)}')

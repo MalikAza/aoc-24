@@ -1,6 +1,6 @@
 from io import TextIOWrapper
 from typing import List, Tuple
-from utils.python import get_file, deep_copy_arg
+from utils.python import get_input_file_from_script_file, deep_copy_arg
 
 def get_left_and_right(file: TextIOWrapper) -> Tuple[List[int], List[int]]:
     lines = [line.replace('\n', '') for line in file.readlines()]
@@ -37,7 +37,7 @@ def part_two_solution(left: List[int], right: List[int]) -> int:
     return sum(number * right.count(number) for number in left)
 
 def run():
-    file = get_file(__file__)
+    file = get_input_file_from_script_file(__file__)
     left, right = get_left_and_right(file)
 
     print("Part one solution is: ", part_one_solution(left, right))

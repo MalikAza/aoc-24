@@ -12,12 +12,28 @@
 pip install -r requirements.txt
 ```
 
+### Typescript
+
+```bash
+yarn
+# or
+npm install
+```
+
 ## Launching scripts
 
-_Pre-requisite: Create `input.txt` inside of each folder `day_<number>` and then copy your input puzzle respectively._
+_Pre-requisite: Create `input.txt` inside of each folder `day_<number>` and then copy your input puzzle respectively.\_
 
 ### Python
 
 ```bash
 python runner.py <day_number>
+```
+
+### Typescript
+
+```bash
+yarn solve <day_number>
+# or
+npm run solve 1
 ```

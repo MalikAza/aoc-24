@@ -7,4 +7,4 @@ def solution_print(part: int, solution: int) -> None:
         case 2:
             part_string = 'two'
     
-    print(f"Part {part} solution is: {solution}")
+    print(f"Part {part_string} solution is: {solution}")

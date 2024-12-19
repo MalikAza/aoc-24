@@ -1,6 +1,6 @@
 from functools import cmp_to_key
 from typing import List, Tuple
-from utils.python import get_input_file_from_script_file
+from utils.python import get_input_file_from_script_file, solution_print
 
 class RulesStore:
     def __init__(self, data: str):
@@ -89,8 +89,8 @@ def run():
     r, p = file.read().split('\n\n')
     solution = Solution(r, p)
 
-    print("Part one solution is: ", solution.solve_part_one())
-    print("Part two solution is: ", solution.solve_part_two())
+    solution_print(1, solution.solve_part_one())
+    solution_print(2, solution.solve_part_two())
 
 if __name__ == '__main__':
     run()

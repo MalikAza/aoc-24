@@ -1,7 +1,7 @@
 from functools import cache
 import random
 from typing import Dict, Literal, Tuple, List, Set
-from utils.python import get_input_file_from_script_file, MapUtils
+from utils.python import get_input_file_from_script_file, MapUtils, solution_print
 import collections
 
 class Region:
@@ -145,8 +145,8 @@ def run():
     file = get_input_file_from_script_file(__file__)
     map = Map(file.read())
 
-    print(f'Part one solution is: {map.solve(1)}')
-    print(f'Part two solution is: {map.solve(2)}')
+    solution_print(1, map.solve(1))
+    solution_print(2, map.solve(2))
 
 if __name__ == '__main__':
     run()

@@ -1,7 +1,7 @@
 from copy import deepcopy
 from functools import cache
 from typing import Tuple
-from utils.python import get_input_file_from_script_file, MapUtils
+from utils.python import get_input_file_from_script_file, MapUtils, solution_print
 
 class Map(MapUtils):
     __slots__ = ['map', 'directions', 'robot_position', 'walls']
@@ -113,7 +113,7 @@ def run():
     file = get_input_file_from_script_file(__file__)
     map = Map(file.read())
 
-    print(f'Part one solution is: {map.solve_part_one()}')
+    solution_print(1, map.solve_part_one())
 
 if __name__ == '__main__':
     run()

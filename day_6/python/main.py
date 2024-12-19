@@ -1,5 +1,5 @@
 from typing import List, Literal, Tuple
-from utils.python import get_input_file_from_script_file, MapUtils
+from utils.python import get_input_file_from_script_file, MapUtils, solution_print
 
 class Map(MapUtils):
     __guard_icon: Literal['^', '>', 'v', '<']
@@ -43,7 +43,7 @@ def run():
     file = get_input_file_from_script_file(__file__)
     map = Map(file.read())
 
-    print("Part one solution is: ", map.solve_part_one())
+    solution_print(1, map.solve_part_one())
 
 if __name__ == '__main__':
     run()

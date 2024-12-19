@@ -1,6 +1,6 @@
 from copy import deepcopy
 import re
-from utils.python import get_input_file_from_script_file
+from utils.python import get_input_file_from_script_file, solution_print
 
 class DiskMap:
 
@@ -48,7 +48,7 @@ def run():
     file = get_input_file_from_script_file(__file__)
     disk_map = DiskMap(file.read())
 
-    print("Part one solution is: ", disk_map.solve_part_one())
+    solution_print(1, disk_map.solve_part_one())
 
 if __name__ == '__main__':
     run()

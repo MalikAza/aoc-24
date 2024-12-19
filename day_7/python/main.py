@@ -1,6 +1,6 @@
 from itertools import product
 from typing import List, Literal
-from utils.python import get_input_file_from_script_file
+from utils.python import get_input_file_from_script_file, solution_print
 
 
 class Solution:
@@ -40,8 +40,8 @@ def run():
     file = get_input_file_from_script_file(__file__)
     solution = Solution(file.read().split('\n'))
     
-    print("Part one solution is: ", solution.solve(1))
-    print("Part two solution is: ", solution.solve(2))
+    solution_print(1, solution.solve(1))
+    solution_print(2, solution.solve(2))
 
 if __name__ == '__main__':
     run()

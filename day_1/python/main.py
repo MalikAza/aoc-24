@@ -1,6 +1,6 @@
 from io import TextIOWrapper
 from typing import List, Tuple
-from utils.python import get_input_file_from_script_file, deep_copy_arg
+from utils.python import get_input_file_from_script_file, deep_copy_arg, solution_print
 
 def get_left_and_right(file: TextIOWrapper) -> Tuple[List[int], List[int]]:
     lines = [line.replace('\n', '') for line in file.readlines()]
@@ -40,8 +40,8 @@ def run():
     file = get_input_file_from_script_file(__file__)
     left, right = get_left_and_right(file)
 
-    print("Part one solution is: ", part_one_solution(left, right))
-    print("Part two solution is: ", part_two_solution(left, right))
+    solution_print(1, part_one_solution(left, right))
+    solution_print(2, part_two_solution(left, right))
 
 if __name__ == "__main__":
     run()

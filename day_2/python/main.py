@@ -1,7 +1,7 @@
 from io import TextIOWrapper
 from itertools import combinations, pairwise
 from typing import List
-from utils.python import get_input_file_from_script_file
+from utils.python import get_input_file_from_script_file, solution_print
 
 def get_reports(file: TextIOWrapper) -> List[List[int]]:
     lines = [line.replace('\n', '') for line in file.readlines()]
@@ -67,8 +67,8 @@ def run ():
     safe_reports_part_one = [report for report in reports if Report(report).is_safe()]
     safe_reports_part_two = [report for report in reports if any([Report(list(comb)).is_safe() for comb in combinations(report, len(report)-1)])]
 
-    print("Part one solution is: ", len(safe_reports_part_one))
-    print("Part two solution is: ", len(safe_reports_part_two))
+    solution_print(1, len(safe_reports_part_one))
+    solution_print(2, len(safe_reports_part_two))
 
 if __name__ == '__main__':
     run()

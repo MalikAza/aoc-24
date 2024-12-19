@@ -1,5 +1,5 @@
 from typing import List, Literal, Tuple
-from utils.python import get_input_file_from_script_file
+from utils.python import get_input_file_from_script_file, solution_print
 import re
 
 class Memory:
@@ -39,8 +39,8 @@ def run():
     file = get_input_file_from_script_file(__file__)
     memory = Memory(file.read())
 
-    print("Part one solution is: ", memory.solve(1))
-    print("Part two solution is: ", memory.solve(2))
+    solution_print(1, memory.solve(1))
+    solution_print(2, memory.solve(2))
 
 if __name__ == '__main__':
     run()

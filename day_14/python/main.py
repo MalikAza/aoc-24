@@ -3,7 +3,7 @@ from functools import reduce
 from itertools import count
 from operator import mul
 from typing import List, Literal, Tuple
-from utils.python import get_input_file_from_script_file
+from utils.python import get_input_file_from_script_file, solution_print
 import numpy as np
 
 class Robot:
@@ -126,8 +126,8 @@ def run():
     solution_part_one = Solution(file.readlines(), 101, 103)
     solution_part_two = deepcopy(solution_part_one)
 
-    print(f'Part one solution is: {solution_part_one.solve(1)}')
-    print(f'Part two solution is: {solution_part_two.solve(2)}')
+    solution_print(1, solution_part_one.solve(1))
+    solution_print(2, solution_part_two.solve(2))
 
 if __name__ == '__main__':
     run()

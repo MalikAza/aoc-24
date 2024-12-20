@@ -40,4 +40,6 @@ function run() {
   solutionLog(2, partTwoSolution(left, right))
 }
 
-run()
+if (require.main === module) {
+  run()
+}

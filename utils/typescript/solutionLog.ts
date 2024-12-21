@@ -1,14 +1,5 @@
-export function solutionLog(part: number, solution: number) {
-  let partString: string = ''
-  
-  switch (part) {
-    case 1:
-      partString = 'one'
-      break
-    case 2:
-      partString = 'two'
-      break
-  }
+import { Part } from "@utils/types"
 
-  console.log(`Part ${partString} solution is: ${solution}`)
+export function solutionLog(part: Part, solution: number) {
+  console.log(`Part ${part === 1 ? "one" : "two"} solution is: ${solution}`)
 }

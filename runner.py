@@ -2,6 +2,7 @@ import sys
 from day_1.python.main import run as day_1
 from day_2.python.main import run as day_2
 from day_3.python.main import run as day_3
+from day_4.python.main import run as day_4
 from day_5.python.main import run as day_5
 from day_6.python.main import run as day_6
 from day_7.python.main import run as day_7
@@ -26,6 +27,8 @@ if __name__ == '__main__':
             day_2()
         case '3':
             day_3()
+        case '4':
+            day_4()
         case '5':
             day_5()
         case '6':

@@ -28,10 +28,10 @@ export class MapUtils {
   start: [number, number] | null = null
   end: [number, number] | null = null
 
-  constructor(data: string, start_value: string | null = null, end_value: string | null = null) {
+  constructor(data: string, startValue: string | null = null, endValue: string | null = null) {
     this.map = data.split('\n')
-    this.startValue = start_value
-    this.endValue = end_value
+    this.startValue = startValue
+    this.endValue = endValue
 
     this.searchStartAndEnd()
   }

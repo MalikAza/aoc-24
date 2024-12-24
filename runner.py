@@ -12,6 +12,7 @@ from day_12.python.main import run as day_12
 from day_13.python.main import run as day_13
 from day_14.python.main import run as day_14
 from day_15.python.main import run as day_15
+from day_19.python.main import run as day_19
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
@@ -47,5 +48,7 @@ if __name__ == '__main__':
             day_14()
         case '15':
             day_15()
+        case '19':
+            day_19()
         case _:
             print('No solution for this day.')

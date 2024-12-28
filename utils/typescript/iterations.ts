@@ -28,3 +28,24 @@ export function* combinations(iterable: Array<any>, length: number): Generator<A
     }
   }
 }
+
+export function product<Item>(iterable: Item[], repeat: number): Item[][] {
+  if (repeat <= 0 || iterable.length === 0) {
+    return []
+  }
+
+  let pools = Array(repeat).fill(iterable)
+  let result = pools[0].map((x: Item) => [x])
+
+    for (let i = 1; i < pools.length; i++) {
+        const temp = []
+        for (const x of result) {
+            for (const y of pools[i]) {
+                temp.push([...x, y])
+            }
+        }
+        result = temp
+    }
+
+    return result
+}

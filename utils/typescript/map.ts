@@ -22,13 +22,13 @@ export class MapUtils {
   private startValue: string | null
   private endValue: string | null
 
-  map: string[]
+  map: string[] | string[][]
 
   possibleDirections: Direction[] = ['^', '>', 'v', '<']
   start: [number, number] | null = null
   end: [number, number] | null = null
 
-  constructor(data: string, startValue: string | null = null, endValue: string | null = null) {
+  constructor(data: string = '', startValue: string | null = null, endValue: string | null = null) {
     this.map = data.split('\n')
     this.startValue = startValue
     this.endValue = endValue
